@@ -1,0 +1,19 @@
+ak devops script collection.
+Usage: ak <command> ...
+Commands:
+
+ update             :更新版本
+ version            :查看版本
+ help               :查看帮助
+ install-plugin     :安装插件
+                     ak install-plugin script-name < script-name.sh
+ <script>           :执行对应脚本
+
+Scripts:
+
+ example:
+  这是一个示例脚本,ak example hello 试试！
+
+ install-go:
+  golang自动安装脚本
+
