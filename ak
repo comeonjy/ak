@@ -40,7 +40,7 @@ function update() {
     echo "export AK_ROOT=${install_path}ak-${version:1}" >> ~/.bash_profile
     echo "export PATH=\$PATH:\$AK_ROOT" >> ~/.bash_profile
   else
-    sed -i "s:export AK_ROOT=(.*):export AK_ROOT=${install_path}ak-${version:1}:"  ~/.bash_profile
+    sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version:1}:"  ~/.bash_profile
   fi
   source ~/.bash_profile
 
