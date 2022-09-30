@@ -1,26 +1,48 @@
-# AK
-脚本集合
+```
 
-### 代码规范
-* 函数名用蛇形，文件名用中横线，隐藏函数命名用下划线开头
+       __________/\\\\\\\\\_______________________/\\\________/\\\______        
+        ________/\\\\\\\\\\\\\____________________\/\\\_____/\\\//_______       
+         _______/\\\/////////\\\___________________\/\\\__/\\\//__________      
+          ______\/\\\_______\/\\\___________________\/\\\\\\//\\\__________     
+           ______\/\\\\\\\\\\\\\\\___________________\/\\\//_\//\\\_________    
+            ______\/\\\/////////\\\___________________\/\\\____\//\\\________   
+             ______\/\\\_______\/\\\___________________\/\\\_____\//\\\_______  
+              ______\/\\\_______\/\\\___________________\/\\\______\//\\\______ 
+               ______\///________\///____________________\///________\///_______
+                                                      
+```
+
+
+Linux下脚本管理工具
+
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.jiangyang.me)](https://blog.jiangyang.me)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/comeonjy/ak)
+![GitHub](https://img.shields.io/github/license/comeonjy/ak)
+![GitHub issues](https://img.shields.io/github/issues/comeonjy/ak)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/comeonjy/ak)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/comeonjy/ak)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/comeonjy/ak)
+![GitHub last commit](https://img.shields.io/github/last-commit/comeonjy/ak)
+![GitHub repo size](https://img.shields.io/github/repo-size/comeonjy/ak)
+![GitHub language count](https://img.shields.io/github/languages/count/comeonjy/ak)
+![Lines of code](https://img.shields.io/tokei/lines/github/comeonjy/ak)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/comeonjy/ak)
+![GitHub contributors](https://img.shields.io/github/contributors-anon/comeonjy/ak)
+![Sourcegraph for Repo Reference Count](https://img.shields.io/sourcegraph/rrc/github.com/comeonjy/ak)
+![GitHub top language](https://img.shields.io/github/languages/top/comeonjy/ak)
+
 
 
 ### 安装使用
 
-> 一键安装
-
-```shell
-curl -o ak-install.sh https://raw.githubusercontent.com/comeonjy/ak/main/install.sh && bash ak-install.sh && rm -f ak-install.sh
-```
-
 > 手动安装
 
 ```shell
-tar -xvf ak.tar.gz /usr/local/
-export AK_ROOT=/usr/local/ak
+curl -o ak-0.0.1.tar.gz https://codeload.github.com/comeonjy/ak/tar.gz/refs/tags/v0.0.1
+tar -xvf ak-0.0.1.tar.gz -C /usr/local/
+export AK_ROOT=/usr/local/ak-0.0.1
 export PATH=$PATH:$AK_ROOT
 ```
-
 
 > Debug
 
@@ -29,9 +51,35 @@ export AK_ROOT=$(PWD)
 export PATH=$PATH:$AK_ROOT
 ```
 
+### 代码规范
+* 函数名用蛇形，文件名用中横线，隐藏函数命名用下划线开头
+* Commit提交
+
+| Commit      | 描述      |
+|-------------|---------|
+| :bug:       | 修复BUG   |
+| :memo:      | 添加或更新文档 |
+| :sparkles:  | 引入新功能   |
+| :test_tube: | 测试      |
+
+* 目录结构
+```
+.
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── VERSION
+├── ak
+├── ak.help
+├── base # 脚本目录
+└── lib  # 工具库
+```
 
 ### TODO
 - [ ] 支持安装指定版本ak
 - [ ] 支持卸载ak
 - [ ] 支持多版本go共存安装
 - [ ] 支持安装指定版本go
+- [ ] 支持一键安装
+- [ ] 支持选项参数
+- [ ] 兼容各操作系统发行版
