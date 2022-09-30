@@ -48,8 +48,8 @@ function update() {
 }
 
 function install-plugin() {
-    read -r file
-    echo "$file" >> "$AK_ROOT/base/$1.sh"
+    read -r -d "EOF" file
+    echo "$file" > "$AK_ROOT/base/$1.sh"
     ak _mk_help
 }
 
