@@ -2,7 +2,7 @@ AK devops script collection.
 Usage: ak <command> ...
 Commands:
 
- update [branch]       :更新版本
+ update [branch]           :更新版本
                             使用 "ak update" 安装最新稳定版本
                             使用 "source ak update [branch]" 立即使用新版本
 
