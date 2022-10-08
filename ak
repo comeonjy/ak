@@ -12,15 +12,20 @@ function update() {
   echo "当前版本:$(version)"
 
   install_path=/usr/local/
-  pkg_path=https://codeload.github.com/comeonjy/ak/tar.gz/refs/tags/
 
-  if [ "$1" != "" ]; then
-      version=$1
-  else
-      version=$(get_json_value "$(curl https://api.github.com/repos/comeonjy/ak/releases/latest)" "tag_name" | awk '$1=$1')
-  fi
+  case $1 in
+  "")
+    versionStr=$(get_json_value "$(curl https://api.github.com/repos/comeonjy/ak/releases/latest)" "tag_name" | awk '$1=$1')
+    version=${versionStr:1}
+    pkg_path=https://codeload.github.com/comeonjy/ak/tar.gz/refs/tags/${version}
+    ;;
+  *)
+    version=$1
+    pkg_path=https://codeload.github.com/comeonjy/ak/tar.gz/refs/heads/${version}
+    ;;
+  esac
 
-  if [ -d "${install_path}ak-${version:1}" ];then
+  if [ -d "${install_path}ak-${version}" ];then
     read -r -p "目录 ${install_path}ak 已存在，是否覆盖？[Y/N] (Y):" answer
     case $answer in
     "Y"|"y"|"")
@@ -32,15 +37,15 @@ function update() {
     esac
   fi
 
-  curl -o ak-"${version:1}".tar.gz ${pkg_path}"${version}"
-  tar -xvf ak-"${version:1}".tar.gz -C ${install_path}
-  rm -f ak-"${version:1}".tar.gz
+  curl -o ak-"${version}".tar.gz "${pkg_path}"
+  tar -xvf ak-"${version}".tar.gz -C ${install_path}
+  rm -f ak-"${version}".tar.gz
 
   if ! grep "export AK_ROOT="  ~/.bash_profile ;then
-    echo "export AK_ROOT=${install_path}ak-${version:1}" >> ~/.bash_profile
+    echo "export AK_ROOT=${install_path}ak-${version}" >> ~/.bash_profile
     echo "export PATH=\$PATH:\$AK_ROOT" >> ~/.bash_profile
   else
-    sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version:1}:"  ~/.bash_profile
+    sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version}:"  ~/.bash_profile
   fi
   source ~/.bash_profile
 
@@ -59,12 +64,14 @@ ak devops script collection.
 Usage: ak <command> ...
 Commands:
 
- update             :更新版本
- version            :查看版本
- help               :查看帮助
- install-plugin     :安装插件
-                     ak install-plugin script-name < script-name.sh
- <script>           :执行对应脚本
+ update [tar/branch]       :更新版本
+ version                   :查看版本
+ help                      :查看帮助
+ install-plugin            :安装插件
+                            Example:
+                              ak install-plugin script-name < script-name.sh
+                              curl http://xxx/honeypot.sh | ak install-plugin honeypot
+ <script>                  :执行对应脚本
 
 Scripts:
 
@@ -91,7 +98,7 @@ else
     "$@"
     ;;
   *)
-    bash "$AK_ROOT"/base/"$1".sh "${@:2}"
+    source "$AK_ROOT"/base/"$1".sh "${@:2}"
     ;;
   esac
 fi
