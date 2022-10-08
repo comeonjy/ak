@@ -1,13 +1,20 @@
-ak devops script collection.
+AK devops script collection.
 Usage: ak <command> ...
 Commands:
 
- update             :更新版本
- version            :查看版本
- help               :查看帮助
- install-plugin     :安装插件
-                     ak install-plugin script-name < script-name.sh
- <script>           :执行对应脚本
+ update [branch]       :更新版本
+                            使用 "ak update" 安装最新稳定版本
+                            使用 "source ak update [branch]" 立即使用新版本
+
+ install-plugin            :安装插件
+
+                            Example:
+                              ak install-plugin script-name < script-name.sh
+                              curl http://xxx/honeypot.sh | ak install-plugin honeypot
+
+ <script>                  :执行对应脚本
+ version                   :查看版本
+ help                      :查看帮助
 
 Scripts:
 
