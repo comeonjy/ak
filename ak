@@ -38,7 +38,7 @@ function update() {
     esac
   fi
 
-  curl -o ak-"${version}".tar.gz "${pkg_path}"
+  curl -s -o ak-"${version}".tar.gz "${pkg_path}"
   tar -xf ak-"${version}".tar.gz -C ${install_path}
   /bin/cp ${install_path}ak-"${version}"/ak /usr/bin/
   echo "${version}" >${install_path}ak-"${version}"/VERSION
@@ -49,9 +49,10 @@ function update() {
   else
     sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version}:" ~/.bash_profile
   fi
-  source ~/.bash_profile
 
-  echo "使用 source ~/.bash_profile 使用新版本"
+  export AK_ROOT=${install_path}ak-${version}
+
+  echo "执行 source ~/.bash_profile 使用新版本"
 
   echo "已经更新为版本:${version}"
 }
