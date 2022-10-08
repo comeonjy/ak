@@ -44,7 +44,7 @@ function update() {
   echo "${version}" >${install_path}ak-"${version}"/VERSION
   rm -f ak-"${version}".tar.gz
 
-  if ! grep "export AK_ROOT=" ~/.bash_profile; then
+  if ! grep "export AK_ROOT=" ~/.bash_profile 2>/dev/null; then
     echo "export AK_ROOT=${install_path}ak-${version}" >>~/.bash_profile
   else
     sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version}:" ~/.bash_profile
