@@ -51,8 +51,6 @@ function update() {
   fi
   source ~/.bash_profile
 
-  ak _mk_help
-
   echo "使用 source ~/.bash_profile 使用新版本"
 
   echo "已经更新为版本:${version}"
