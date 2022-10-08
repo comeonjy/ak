@@ -40,7 +40,7 @@ function update() {
   curl -o ak-"${version}".tar.gz "${pkg_path}"
   tar -xvf ak-"${version}".tar.gz -C ${install_path}
   /bin/cp  ${install_path}ak-"${version}"/ak /usr/bin/
-  echo "${version}" > ${install_path}ak-"${version}"/ak
+  echo "${version}" > ${install_path}ak-"${version}"/VERSION
   rm -f ak-"${version}".tar.gz
 
   if ! grep "export AK_ROOT="  ~/.bash_profile ;then
