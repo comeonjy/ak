@@ -38,10 +38,10 @@ Linux下脚本管理工具
 > 手动安装
 
 ```shell
-curl -o ak-0.0.2.tar.gz https://codeload.github.com/comeonjy/ak/tar.gz/refs/tags/v0.0.2
-tar -xvf ak-0.0.2.tar.gz -C /usr/local/
-export AK_ROOT=/usr/local/ak-0.0.2
-export PATH=$PATH:$AK_ROOT
+curl -o ak-main.tar.gz https://codeload.github.com/comeonjy/ak/tar.gz/refs/heads/main
+tar -xvf ak-main.tar.gz -C /usr/local/
+cp /usr/local/ak-main/ak /usr/bin/
+export AK_ROOT=/usr/local/ak-main
 ```
 
 > Debug

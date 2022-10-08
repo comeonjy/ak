@@ -50,7 +50,9 @@ function update() {
   fi
   source ~/.bash_profile
 
-  echo "已经更新为最新版本:${version}"
+  ak _mk_help
+
+  echo "已经更新为版本:${version}"
 }
 
 function install-plugin() {
