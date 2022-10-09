@@ -8,7 +8,12 @@ function hello() {
 }
 
 function help() {
-    echo "Please input 'hello'"
+    echo "example script."
+    echo "Usage: example <command> ..."
+    echo ""
+    echo "Commands:"
+    echo " hello   :hello"
+    echo " help    :查看帮助"
 }
 
-if [ $# == 0 ];then help; else "$@";fi
+if [ $# = 1 ];then help; else "${@:2}";fi

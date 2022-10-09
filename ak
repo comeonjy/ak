@@ -52,7 +52,10 @@ function update() {
 
   export AK_ROOT=${install_path}ak-${version}
 
+  source "$AK_ROOT"/completion.sh
+
   echo "执行 source ~/.bash_profile 使用新版本"
+  echo "执行 source $AK_ROOT/completion.sh 使用自动补全"
 
   echo "已经更新为版本:${version}"
 }
@@ -100,7 +103,7 @@ function help() {
   cat <"$AK_ROOT"/ak.help | less
 }
 
-if [ $# == 0 ]; then
+if [ $# = 0 ]; then
   help
 else
   case $1 in
@@ -109,7 +112,7 @@ else
     ;;
   *)
     # shellcheck source=$AK_ROOT/base/$1.sh
-    source "$AK_ROOT"/base/"$1".sh "${@:2}"
+    source "$AK_ROOT"/base/"$1".sh "${@}"
     ;;
   esac
 fi
