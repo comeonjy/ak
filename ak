@@ -50,12 +50,13 @@ function update() {
     sed -i "s:export AK_ROOT=.*:export AK_ROOT=${install_path}ak-${version}:" ~/.bash_profile
   fi
 
-  export AK_ROOT=${install_path}ak-${version}
+  if ! grep "source \$AK_ROOT/completion.sh" ~/.bash_profile  2>/dev/null; then
+    echo "source \$AK_ROOT/completion.sh" >> ~/.bash_profile
+  fi
 
-  source "$AK_ROOT"/completion.sh
+  source ~/.bash_profile
 
   echo "执行 source ~/.bash_profile 使用新版本"
-  echo "执行 source $AK_ROOT/completion.sh 使用自动补全"
 
   echo "已经更新为版本:${version}"
 }

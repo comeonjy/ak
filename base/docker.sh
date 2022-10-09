@@ -3,7 +3,9 @@
 source "$AK_ROOT"/lib/print.sh
 
 function goto() {
-  source cd $(docker inspect $1 | grep MergedDir | awk -F ':' '{print $2}' | cut -c 3- | rev | cut -c 3- | rev)
+  path=$(docker inspect $1 | grep MergedDir | awk -F ':' '{print $2}' | cut -c 3- | rev | cut -c 3- | rev)
+  echo "$path"
+  source cd "${path}"
 }
 
 function help() {
