@@ -1,4 +1,5 @@
 #!/bin/bash
+# 容器相关的脚本工具
 
 source "$AK_ROOT"/lib/print.sh
 

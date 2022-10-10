@@ -18,9 +18,9 @@ Commands:
 
 Scripts:
 
+ docker:
+  容器相关的脚本工具
+
  example:
   这是一个示例脚本,ak example hello 试试！
-
- install-go:
-  golang自动安装脚本
 

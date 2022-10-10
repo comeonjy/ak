@@ -51,6 +51,20 @@ export AK_ROOT=$(PWD)
 export PATH=$PATH:$AK_ROOT
 ```
 
+### Example
+
+```shell
+# 查看当前版本
+ak version
+
+# 更新到最新版本
+source ak update main
+
+# 进入指定容器
+source ak docker goto <container_name>
+
+```
+
 ### 代码规范
 * 函数名用蛇形，文件名用中横线，隐藏函数命名用下划线开头
 * Commit提交
