@@ -42,6 +42,7 @@ curl -o ak-main.tar.gz https://codeload.github.com/comeonjy/ak/tar.gz/refs/heads
 tar -xvf ak-main.tar.gz -C /usr/local/
 cp /usr/local/ak-main/ak /usr/bin/
 export AK_ROOT=/usr/local/ak-main
+source ak update main
 ```
 
 > Debug
@@ -55,13 +56,13 @@ export PATH=$PATH:$AK_ROOT
 
 ```shell
 # 查看当前版本
-ak version
+[root@localhost ~]# ak version
 
 # 更新到最新版本
-source ak update main
+[root@localhost ~]# source ak update main
 
 # 进入指定容器
-source ak docker goto <container_name>
+[root@localhost ~]# source ak docker goto <container_name>
 
 ```
 
@@ -97,4 +98,3 @@ source ak docker goto <container_name>
 - [ ] 兼容各操作系统发行版
 - [ ] 解决脚本内不能修改父shell环境变量问题
 - [ ] 解决插件安装问题
-- [ ] 拆分bash-completion

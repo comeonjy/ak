@@ -33,7 +33,7 @@ function update() {
       ;;
     *)
       echo "取消安装"
-      exit 0
+      return 0
       ;;
     esac
   fi
@@ -43,6 +43,7 @@ function update() {
   /bin/cp ${install_path}ak-"${version}"/ak /usr/bin/
   echo "${version}" >${install_path}ak-"${version}"/VERSION
   rm -f ak-"${version}".tar.gz
+  _mk_help
 
   if ! grep "export AK_ROOT=" ~/.bash_profile 2>/dev/null; then
     echo "export AK_ROOT=${install_path}ak-${version}" >>~/.bash_profile
@@ -54,6 +55,7 @@ function update() {
     echo "source \$AK_ROOT/completion.sh" >> ~/.bash_profile
   fi
 
+  # shellcheck source=.bash_profile
   source ~/.bash_profile
 
   echo "执行 source ~/.bash_profile 使用新版本"
@@ -64,7 +66,7 @@ function update() {
 function install-plugin() {
   read -r -d "EOF" file
   echo "$file" >"$AK_ROOT/base/$1.sh"
-  ak _mk_help
+  _mk_help
 }
 
 function _mk_help() {
