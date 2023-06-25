@@ -14,12 +14,15 @@ function goto() {
 }
 
 function help() {
-  echo "docker script."
-  echo "Usage: docker <command> ..."
-  echo ""
-  echo "Commands:"
-  echo " goto    <container_name> :进入指定容器实际存储目录"
-  echo " help                     :查看帮助"
+  echo '''
+docker script.
+Usage: docker <command> ...
+
+Commands:
+ goto    <container_name> :进入指定容器实际存储目录
+                           source ak docker goto <container_name>
+ help                     :查看帮助
+ '''
 }
 
 if [ $# = 1 ]; then help; else "${@:2}"; fi

@@ -4,16 +4,18 @@
 source "$AK_ROOT"/lib/print.sh
 
 function hello() {
-    pGreen "Hello World! $1"
+  pGreen "Hello World! $1"
 }
 
 function help() {
-    echo "example script."
-    echo "Usage: example <command> ..."
-    echo ""
-    echo "Commands:"
-    echo " hello   :hello"
-    echo " help    :查看帮助"
+  echo '''
+example script.
+Usage: example <command> ...
+
+Commands:
+ hello   :hello
+ help    :查看帮助
+ '''
 }
 
-if [ $# = 1 ];then help; else "${@:2}";fi
+if [ $# = 1 ]; then help; else "${@:2}"; fi
